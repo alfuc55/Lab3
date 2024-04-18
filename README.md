@@ -29,7 +29,7 @@ A este robot es posible envíarle, mediante nodos, la información de movimiento
 
 # Resultados
 La primera parte de esta practica consiste en el calculo de la distancia a avanzar y el ángulo a girar con respecto a la posición actual del robot dadas un par de coordenadas x,  y con respecto a un eje de referencia fijo que será el origen del ambiente en donde se mueve el robot. Para alcanzar el destino primero se debe conocer el ángulo a girar y realizar el giro del robot, luego se debe calcular la distancia a alcanzar sobre el eje x del robot y avanzar. Para lograr este cálculo se requiere como entrada una coordenada a alcanzar por el robot (xd,yd).  Una vez con las coordenadas se prosigue a aplicar identidades y ecuaciones trigonométricas para conocer el ángulo a girar, que este dado por tan^-1(y/x) y la distancia a lograr que no es mas que la hipotenusa del triangulo formado, dicha distancia esta dada por el teorema de Pitágoras d = sqrt(x^2+y^2).  
-Para programas estos cálculos usando Python se requieren las siguientes librerías: 
+Para programar estos cálculos usando Python se requieren las siguientes librerías: 
         from math import atan2, radians
         import math
         from math import sqrt
@@ -39,13 +39,13 @@ Para conocer la posición actual de la tortuga usamos la función
                 self.current_x = pose.x
                 self.current_y = pose.y
 y para calcular la distancia a lograr (DTG) y el ángulo (ATG) necesitamos conocer la posición actual de la tortuga, ya que las ecuaciones mostradas anteriormente toman el origen del plano condenado como posición del objeto. Los cálculos son ejecutados en la función “posición” la cual devuelve los valores ATG y DTG
-        def posicion(self,xd,yd):
-                x = self.current_x
-                y = self.current_y 
-                dtg = sqrt((xd-x)**2+(yd-y)**2)
-                atg = math.atan2((yd-y),(xd-x))*180/(math.pi)
-                info = [dtg, atg]
-                return info
+              $  def posicion(self,xd,yd):
+                        x = self.current_x
+                        y = self.current_y 
+                        dtg = sqrt((xd-x)**2+(yd-y)**2)
+                        atg = math.atan2((yd-y),(xd-x))*180/(math.pi)
+                        info = [dtg, atg]
+                        return info $
 
 para mostrar los cálculos en la consola usamos la línea: 
         rospy.loginfo("DTG: %f  ATG: %f , dtg, atg)
